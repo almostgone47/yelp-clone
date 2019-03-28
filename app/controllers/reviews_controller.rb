@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+    @restaurant = params[:restaurant_id]
   end
 
   # GET /reviews/1/edit
@@ -23,7 +24,7 @@ class ReviewsController < ApplicationController
     @review.restaurant_id = params[:restaurant_id]
     respond_to do |format|
       if @review.save
-        format.html { redirect_to root_path, notice: 'Review was successfully created.' }
+        format.html { redirect_to restaurant_path(params[:restaurant_id]), notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
