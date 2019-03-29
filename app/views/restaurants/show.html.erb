@@ -26,11 +26,11 @@
   </div>
 
   <div class="col-md-9">
-    <% if @review.blank? %>
+    <% if @reviews.blank? %>
       <h3>No reviews yet. Be the first to leave a review!</h3>
     <% else %>  
       <% @reviews.each do |review| %>
-        <p><%= review.rating %></p>
+        <p class="star-rating" data-score= <%= review.rating %></p>
         <p><%= review.comment %></p>
       <% end %>
     <% end %>  
@@ -39,3 +39,13 @@
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-link"  %> |
 <%= link_to 'Back', restaurants_path, class: "btn btn-link"  %>
+
+<script>
+  $('.star-rating').raty({
+    path: 'https://s3.us-east-2.amazonaws.com/sample-app47/stars',
+    readOnly: true,
+    score: function(){
+      return $(this).attr('data-score');
+    }
+  });
+</script>
