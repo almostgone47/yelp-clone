@@ -11,11 +11,8 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :rating %>
-    <%= form.number_field :rating, class: "form-control" %>
-  </div>
 
+  <div id="star-rating"></div>
   <div class="form-group">
     <%= form.label :comment %>
     <%= form.text_area :comment, class: "form-control"  %>
@@ -25,3 +22,10 @@
     <%= form.submit class: "btn btn-primary"%>
   </div>
 <% end %>
+
+<script>
+  $('#star-rating').raty({
+    path: 'https://s3.us-east-2.amazonaws.com/sample-app47/stars',
+    scoreName: 'review[rating]'
+  });
+</script>
