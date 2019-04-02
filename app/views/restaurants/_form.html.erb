@@ -1,17 +1,5 @@
 <%= form_with(model: restaurant, local: true) do |form| %>
-  <% if restaurant.errors.any? %>
-    <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" >
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>>
-      <h2><%= pluralize(restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
-
-      <ul>
-      <% restaurant.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render 'errors' %>
 
   <div class="form-group">
     <%= form.label :name %>

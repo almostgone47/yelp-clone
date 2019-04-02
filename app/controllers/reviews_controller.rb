@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant
 
   # GET /reviews/1
   # GET /reviews/1.json
@@ -9,7 +10,6 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
-    @restaurant = params[:restaurant_id]
   end
 
   # GET /reviews/1/edit
@@ -61,10 +61,12 @@ class ReviewsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
-      @restaurant = Restaurant.find(params[:restuarant_id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
+    def set_restaurant
+      @restaurant = Restaurant.find(params[:restaurant_id])
+    end
+      # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
       params.require(:review).permit(:rating, :comment, :restaurant_id, :user_id)
     end

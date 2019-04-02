@@ -1,20 +1,20 @@
-<% if resource.errors.any? %>
-  <div id="error_explanation">
+<% if @review.errors.any? %>
+
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <strong>Holy guacamole!</strong> You should check in on some of those fields below.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
-    </h2>
+
+      <h2>
+        <%= pluralize(@review.errors.count, "error") %> prohibited this restaurant from being saved:
+      </h2>
+
     <ul>
-      <% resource.errors.full_messages.each do |message| %>
+      <% @review.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
+
   </div>
 <% end %>
