@@ -1,4 +1,4 @@
-<%= form_with(model: [@restaurant, Review.new], local: true ) do |form| %>
+<%= form_with(model: [@restaurant, @review], local: true ) do |form| %>
   <%= render 'errors' %>
 
   <div id="star-rating"></div>
@@ -13,9 +13,9 @@
 <% end %>
   
 
-<%# <script>
+<script>
   $('#star-rating').raty({
     path: 'https://s3.us-east-2.amazonaws.com/sample-app47/stars',
     scoreName: 'review[rating]'
   });
-</script> %>
+</script>
